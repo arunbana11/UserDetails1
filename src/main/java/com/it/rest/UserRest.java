@@ -1,7 +1,10 @@
 package com.it.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,5 +28,10 @@ public class UserRest {
 		   return ResponseEntity.ok(body);
 	}
 	
-	
+	@GetMapping("/getDetails")
+	ResponseEntity< List<UserBinding>> getDetails()
+	{
+		List<UserBinding> userDetails = userService.getUserDetails();
+		return ResponseEntity.ok(userDetails);
+	}
 }
